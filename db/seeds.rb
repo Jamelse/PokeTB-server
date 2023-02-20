@@ -9,12 +9,16 @@ end
 
 pokemons.each do |poke|
   response = RestClient.get "https://pokeapi.co/api/v2/pokemon/#{poke.downcase}/"
+  response2 = RestClient.get "https://pokeapi.co/api/v2/pokemon-species/#{poke.downcase}/"
 
   poke_hash = JSON.parse(response)
+  poke_desc = JSON.parse(response2)
 
   Pokemon.create(
     name: poke_hash["name"],
-    sprite: poke_hash["sprites"]["front_default"],
+    sprite: poke_hash["sprites"]["other"]["official-artwork"]["front_default"],
+    poke_type: poke_hash["types"][0]["type"]["name"],
+    description: poke_desc["flavor_text_entries"][0]["flavor_text"].gsub!(/[^a-zA-Z,'".Éé ]/, " "),
     trainer_id: Faker::Number.within(range: 1..5)
   )
   

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_223954) do
 
   create_table "trainers", force: :cascade do |t|
     t.string "name"
+    t.string "trainer_img"
   end
 
 end

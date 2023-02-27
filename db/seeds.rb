@@ -26,7 +26,8 @@ end
 
 5.times do 
   Trainer.create(
-    name: Faker::Name.name
+    name: Faker::Name.name,
+    trainer_img: Faker::LoremFlickr.image
   )
 end
 

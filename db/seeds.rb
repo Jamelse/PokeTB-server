@@ -37,7 +37,7 @@ end
     move_2: Faker::Games::Pokemon.move,
     move_3: Faker::Games::Pokemon.move,
     move_4: Faker::Games::Pokemon.move,
-    pokemon_id: Faker::Number.within(range: 1..10)
+    pokemon_id: Faker::Number.unique.within(range: 1..10)
   )
 end
 
